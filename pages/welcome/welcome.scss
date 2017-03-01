@@ -1,0 +1,39 @@
+page-welcome {
+}
+
+@font-face {
+    font-family: HeadingFont;
+    src: url("../assets/fonts/Niconne-Regular.ttf");
+}
+
+.contentSpace {
+    background-image: url("../assets/img/background.jpg");
+    background-color: #121212;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size:contain;
+    color: #EEEEEE;
+}
+
+.heading {
+    margin-top: 25%;
+    margin-bottom: 0px;
+    font-size: 5.5em;
+    text-align: center;
+    font-family: HeadingFont;
+    float: center;
+    
+}
+
+.subheading {
+    float: center;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+

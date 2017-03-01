@@ -10,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { WelcomePage } from '../pages/welcome/welcome';
 import {Storage} from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
  
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     LoginPage,
     RegisterPage,
     ProfilePage,
-    EditProfilePage
+    EditProfilePage,
+    WelcomePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -41,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     LoginPage,
     RegisterPage,
     ProfilePage,
-    EditProfilePage
+    EditProfilePage,
+    WelcomePage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 

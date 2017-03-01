@@ -25,7 +25,7 @@ export class TabsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage) {
     this.checkLogin();
-
+    
     
     
   }
@@ -41,6 +41,6 @@ export class TabsPage {
           this.tab4title = "Sign In";
       }
     });
-  }
+  } 
 
 }

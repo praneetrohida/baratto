@@ -4,6 +4,7 @@ import {Storage} from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
+import { WelcomePage } from '../welcome/welcome';
 
 /*
   Generated class for the Account page.
@@ -23,7 +24,12 @@ export class AccountPage {
 
   logout() {
     this.storage.set('token',null);
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.popToRoot().then((val) => {
+            this.navCtrl.setRoot(WelcomePage);
+      }).catch(() => {});
+    // this.navCtrl.remove(1,this.navCtrl.length()-2);
+    // this.navCtrl.pop();
+    
     
   }
   ionViewDidLoad() {

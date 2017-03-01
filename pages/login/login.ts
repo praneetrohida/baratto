@@ -47,8 +47,7 @@ export class LoginPage {
    console.log('clicked');
 console.log(form.valid);
     
-    this.http.post(link,dataa).subscribe(
-      (data) => {
+    this.http.post(link,dataa).subscribe((data) => {
         var alertMessage : string;
         console.log('sent');
         this.token=data.text();
@@ -60,7 +59,7 @@ console.log(form.valid);
           this.storage.set("token",this.token);
           
           //this.navCtrl.parent.select(0);
-          this.navCtrl.push(AccountPage);
+          // this.navCtrl.push(AccountPage);
           
         }
         let alert = this.alertCtrl.create({
@@ -69,11 +68,16 @@ console.log(form.valid);
         });
          alert.present();
          loader.dismiss();
+         this.navCtrl.popToRoot().then((val) => {
+            this.navCtrl.setRoot(TabsPage);
+         }).catch(() => {});
+        //  this.navCtrl.remove(1,this.navCtrl.length()-2);
+        //  this.navCtrl.pop();
+        
          
       }, error => {
             console.log("Oooops!");
-      }
-    );
+      });
     }
   }
 

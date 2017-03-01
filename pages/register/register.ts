@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
+import {TabsPage } from '../tabs/tabs';
+import {LoginPage } from '../login/login';
+import {WelcomePage } from '../welcome/welcome';
 
 /*
   Generated class for the Register page.
@@ -29,7 +32,7 @@ export class RegisterPage {
   cPassword: string;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController, public http: Http, public alertCtrl: AlertController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,public loadingCtrl:LoadingController, public http: Http, public alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
@@ -40,6 +43,10 @@ export class RegisterPage {
   }
 
   doRegister() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
     //write code here
     var link = 'http://139.59.5.156/test/register.php';
     var dataa = JSON.stringify({
@@ -76,8 +83,13 @@ export class RegisterPage {
         subTitle: alertMsg,
         buttons: ['ok']
       });
-      this.viewCtrl.dismiss();
+      loader.dismiss();
       alert.present();
+      this.navCtrl.popToRoot().then((val) => {
+            this.navCtrl.setRoot(WelcomePage);
+      }).catch(() => {});
+      // this.navCtrl.remove(1,this.navCtrl.length()-2);
+      // this.navCtrl.pop();
     });
 
     
