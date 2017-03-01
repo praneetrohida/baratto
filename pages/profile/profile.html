@@ -1,0 +1,75 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+    <button ion-button icon-only clear (click)="editProfile()"> <ion-icon name="create"></ion-icon> </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  
+    <ion-list inset>
+      <ion-item>
+      <ion-avatar item-left>
+        <img src="https://s-media-cache-ak0.pinimg.com/originals/97/e6/13/97e613c2e0a03eef5321108f10abb635.jpg">
+      </ion-avatar>
+      <div style="font-size:15px"> {{user.firstName}} {{user.lastName}} </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Username </ion-label>
+        <ion-input type="text" [(ngModel)]="user.username" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Sex </ion-label>
+        <ion-input type="text" [(ngModel)]="user.sex" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Email </ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Phone </ion-label>
+        <ion-input type="tel" [(ngModel)]="user.phone" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Address Line </ion-label>
+        <ion-input type="text" [(ngModel)]="user.addLine" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> City </ion-label>
+        <ion-input type="text" [(ngModel)]="user.city" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> State </ion-label>
+        <ion-input type="text" [(ngModel)]="user.state" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Pincode </ion-label>
+        <ion-input type="number" [(ngModel)]="user.pincode" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> DOB </ion-label>
+        <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="user.DOB" disabled="true" readonly="true"></ion-datetime>
+      </ion-item>
+    </ion-list> 
+  
+</ion-content>
