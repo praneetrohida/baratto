@@ -4,6 +4,7 @@ import {Storage} from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
+import { TextToSpeech } from 'ionic-native';
 /*
   Generated class for the Welcome page.
 
@@ -18,6 +19,7 @@ export class WelcomePage {
   public token:string;
   public isLogin:boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public viewCtrl:ViewController) {
+    TextToSpeech.speak("Welcome to Baratto!").then(()=>console.log("success")).catch((reason)=>console.log(reason));
     this.checkLogin();
   }
 
