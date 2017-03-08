@@ -1,0 +1,62 @@
+<!--
+  Generated template for the ViewOneListing page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{name}}</ion-title>
+    <ion-buttons end>
+    <button ion-button icon-only clear (click)="presentActionSheet()"> <ion-icon name="create"></ion-icon> </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list inset>
+
+      <ion-item>
+        <ion-label floating> Name </ion-label>
+        <ion-input type="text" [(ngModel)]="name" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Description </ion-label>
+        <ion-textarea [(ngModel)]="description" disabled="true" readonly="true"> </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Brand </ion-label>
+        <ion-input type="text" [(ngModel)]="brand" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Age </ion-label>
+        <ion-input type="text" [(ngModel)]="age" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Condition </ion-label>
+        <ion-input type="text" [(ngModel)]="condition" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Warranty </ion-label>
+        <ion-input type="text" [(ngModel)]="warranty" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Color </ion-label>
+        <ion-input type="text" [(ngModel)]="color" disabled="true" readonly="true"> </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <span> Views </span>
+        <ion-badge> {{views}} </ion-badge>
+      </ion-item>
+    </ion-list> 
+</ion-content>

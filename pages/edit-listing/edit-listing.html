@@ -1,0 +1,66 @@
+<!--
+  Generated template for the EditListing page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--
+  Generated template for the ViewOneListing page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit - {{name}}</ion-title>
+    <ion-buttons end>
+    <button ion-button icon-only clear (click)="doneEditing()"> <ion-icon name="checkmark"></ion-icon> </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list inset>
+
+      <ion-item>
+        <ion-label floating> Name </ion-label>
+        <ion-input type="text" [(ngModel)]="name"  > </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Description </ion-label>
+        <ion-textarea [(ngModel)]="description"  > </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Brand </ion-label>
+        <ion-input type="text" [(ngModel)]="brand"  > </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Age </ion-label>
+        <ion-input type="text" [(ngModel)]="age"  > </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Condition </ion-label>
+        <ion-input type="text" [(ngModel)]="condition"  > </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Warranty </ion-label>
+        <ion-input type="text" [(ngModel)]="warranty"  > </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating> Color </ion-label>
+        <ion-input type="text" [(ngModel)]="color"  > </ion-input>
+      </ion-item>
+
+    
+
+    </ion-list> 
+</ion-content>

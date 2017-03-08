@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import {TabsPage } from '../tabs/tabs';
 import {LoginPage } from '../login/login';
@@ -32,7 +32,7 @@ export class RegisterPage {
   cPassword: string;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,public loadingCtrl:LoadingController, public http: Http, public alertCtrl: AlertController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,public loadingCtrl:LoadingController, public http: Http, public alertCtrl: AlertController, public toastCtrl: ToastController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
@@ -78,13 +78,12 @@ export class RegisterPage {
           alertMsg = "Email already registered";
           break;
       }
-      let alert = this.alertCtrl.create({
-        title: "" ,
-        subTitle: alertMsg,
-        buttons: ['ok']
-      });
+     this.toastCtrl.create({
+                  message: alertMsg,
+                  duration: 3000,
+                  position: "bottom"
+        }).present();
       loader.dismiss();
-      alert.present();
       this.navCtrl.popToRoot().then((val) => {
             this.navCtrl.setRoot(WelcomePage);
       }).catch(() => {});

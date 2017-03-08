@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
 import {Storage} from '@ionic/storage';
+import { Http } from '@angular/http';
 import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
 import { WelcomePage } from '../welcome/welcome';
+import { AddListingPage } from '../add-listing/add-listing';
+import { ViewListingsPage } from '../view-listings/view-listings';
+
 
 /*
   Generated class for the Account page.
@@ -17,20 +21,34 @@ import { WelcomePage } from '../welcome/welcome';
   templateUrl: 'account.html'
 })
 export class AccountPage {
-  token:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage) {
-    
+  token:string; user:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public platform: Platform, public http: Http) {
+    this.user={
+          firstName:"",
+          lastName:""
+    }
+    this.storage.get('token').then((val) => {
+      this.token = val;
+   
+
+    var link = 'http://139.59.5.156/test/viewProfile.php';
+    var dataa = JSON.stringify({
+      token : this.token
+    });
+
+    this.http.post(link,dataa).map(res => res.json()).subscribe((data)=> {
+      this.user = data;
+   
+    });
+
+     });
   }
 
   logout() {
     this.storage.set('token',null);
-    this.navCtrl.popToRoot().then((val) => {
-            this.navCtrl.setRoot(WelcomePage);
-      }).catch(() => {});
+    this.platform.exitApp();
     // this.navCtrl.remove(1,this.navCtrl.length()-2);
     // this.navCtrl.pop();
-    
-    
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountPage');
@@ -38,5 +56,13 @@ export class AccountPage {
 
   viewProfile() {
     this.navCtrl.push(ProfilePage);
+  }
+
+  addListing() {
+    this.navCtrl.push(AddListingPage);
+  }
+
+  viewListings() {
+    this.navCtrl.push(ViewListingsPage);
   }
 }

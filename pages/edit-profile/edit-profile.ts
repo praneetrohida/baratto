@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, ToastController, LoadingController} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 
@@ -18,7 +18,7 @@ export class EditProfilePage {
   token: string;
   user: User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public viewCtrl: ViewController, public http: Http, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public viewCtrl: ViewController, public http: Http, public alertCtrl: AlertController, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     this.user = {
       username:"",
       firstName:'',
@@ -36,6 +36,10 @@ export class EditProfilePage {
   }
 
   getProfile() {
+     let loader = this.loadingCtrl.create({
+      content: "Fetching data, please wait..."
+    });
+    loader.present();
     this.storage.get('token').then((val) => {
       this.token = val;
    
@@ -47,6 +51,7 @@ export class EditProfilePage {
 
     this.http.post(link,dataa).map(res => res.json()).subscribe((data)=> {
       this.user = data;
+      loader.dismiss();
       // let alert = this.alertCtrl.create({
       //   title: this.user.firstName,
       //   }
@@ -83,11 +88,11 @@ export class EditProfilePage {
       else {
         alertMsg = "Some error occured";
       }
-      let alert = this.alertCtrl.create({
-        title:alertMsg,
-        buttons:['OK'],
-      });
-      alert.present();
+       this.toastCtrl.create({
+                  message: alertMsg,
+                  duration: 3000,
+                  position: "bottom"
+        }).present();
     });
     
     this.viewCtrl.dismiss();

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController, LoadingController, ToastController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 
@@ -24,7 +24,7 @@ export class LoginPage {
   token : string;
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController, public http:Http, public storage: Storage, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController, public http:Http, public storage: Storage, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
       
   }
 
@@ -62,11 +62,11 @@ console.log(form.valid);
           // this.navCtrl.push(AccountPage);
           
         }
-        let alert = this.alertCtrl.create({
-          subTitle: alertMessage,
-          buttons: ['OK']
-        });
-         alert.present();
+         this.toastCtrl.create({
+                  message: alertMessage,
+                  duration: 3000,
+                  position: "bottom"
+        }).present();
          loader.dismiss();
          this.navCtrl.popToRoot().then((val) => {
             this.navCtrl.setRoot(TabsPage);

@@ -11,6 +11,11 @@ import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { AddListingPage } from '../pages/add-listing/add-listing';
+import { ViewListingsPage} from '../pages/view-listings/view-listings';
+import { ViewOneListingPage} from '../pages/view-one-listing/view-one-listing';
+import { EditListingPage} from '../pages/edit-listing/edit-listing';
+import { SubBrowsePage} from '../pages/sub-browse/sub-browse';
 import {Storage} from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
  
@@ -26,7 +31,12 @@ import { FormsModule } from '@angular/forms';
     RegisterPage,
     ProfilePage,
     EditProfilePage,
-    WelcomePage
+    WelcomePage,
+    AddListingPage,
+    ViewListingsPage,
+    ViewOneListingPage,
+    EditListingPage,
+    SubBrowsePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -44,7 +54,12 @@ import { FormsModule } from '@angular/forms';
     RegisterPage,
     ProfilePage,
     EditProfilePage,
-    WelcomePage
+    WelcomePage,
+    AddListingPage,
+    ViewListingsPage,
+    ViewOneListingPage,
+    EditListingPage,
+    SubBrowsePage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController, LoadingController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import {Observable} from 'rxjs/Rx';
@@ -24,7 +24,7 @@ token: string;
 user: User;
 gotProfile : boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public storage: Storage, public alertCtrl: AlertController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public storage: Storage, public alertCtrl: AlertController, public modalCtrl: ModalController, public loadingCtrl: LoadingController) {
     this.gotProfile = false;
     this.user = {
       username:"",
@@ -43,6 +43,10 @@ gotProfile : boolean;
   }
 
   getProfile() {
+     let loader = this.loadingCtrl.create({
+      content: "Fetching data, please wait..."
+    });
+    loader.present();
     this.storage.get('token').then((val) => {
       this.token = val;
    
@@ -55,6 +59,7 @@ gotProfile : boolean;
     this.http.post(link,dataa).map(res => res.json()).subscribe((data)=> {
       this.user = data;
       this.gotProfile = true;
+      loader.dismiss();
       // let alert = this.alertCtrl.create({
       //   title: this.user.firstName,
       //   }
