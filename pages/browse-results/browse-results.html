@@ -1,5 +1,5 @@
 <!--
-  Generated template for the ViewListings page.
+  Generated template for the BrowseResults page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>View Listings</ion-title>
+    <ion-title>{{subcategory}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,11 +15,7 @@
 
 <ion-content>
   <ion-list no-lines no-padding no-margin>
-    <!--<div >-->
-      <!--<ion-label>-->
-     <ion-card style="padding:5px;" *ngFor="let listing of listings" (click)="viewOneListing(listing)" >
-         <!--<ion-item>-->
-          <!--<ion-label>-->
+     <ion-card style="padding:5px;" *ngFor="let listing of listings" (click)="seeListing(listing)" >
             <ion-img [src]="listing.picture"></ion-img>
             <h1> {{listing.name}} </h1>
             <ion-row>
@@ -27,10 +23,6 @@
               <ion-col> </ion-col>
               <ion-col end> Views: <ion-badge> {{listing.views}} </ion-badge> </ion-col>
             </ion-row>
-          <!--</ion-label>-->
-          <!--</ion-item>-->
         </ion-card>
-        <!--</ion-label>-->
-    <!--</div>-->
   </ion-list>
 </ion-content>

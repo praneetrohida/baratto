@@ -19,6 +19,14 @@
 
 <ion-content>
   <ion-list>
+    
+    <ion-item>
+      <ion-icon item-left name="camera" *ngIf="!pictureSelected"></ion-icon> 
+      <ion-avatar item-left *ngIf="pictureSelected">
+        <ion-img [src]="pictureURI"> </ion-img>
+      </ion-avatar>
+      <button ion-button outline small (click)="uploadPic()"> Upload Profile Picture </button>
+    </ion-item>
 
     <ion-item-divider no-lines color="gray"> Name </ion-item-divider>
 

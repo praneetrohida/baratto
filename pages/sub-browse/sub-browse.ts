@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { BrowseResultsPage } from '../browse-results/browse-results';
 
 /*
   Generated class for the SubBrowse page.
@@ -19,8 +20,11 @@ export class SubBrowsePage {
     this.subcategories = this.category.subcategories;
   }
 
-  ionViewDidLoad() {
-    
+  itemSelected(subcategory) {
+    this.navCtrl.push(BrowseResultsPage,{
+      category:this.category.category,
+      subcategory:subcategory
+    })
   }
 
 }

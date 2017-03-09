@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Http } from '@angular/http';
+import { SeeListingPage } from '../see-listing/see-listing';
 
 import { NavController, AlertController } from 'ionic-angular';
 
@@ -9,22 +11,29 @@ import { NavController, AlertController } from 'ionic-angular';
 })
 export class HomePage {
   token:string;
-  constructor(public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController) {
+  categories;
+  results:Array<any> = [];
+  dataa;
+  constructor(public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController, public http: Http) {
+    var link="http://139.59.5.156/test/categories.json";
+    this.http.get(link).map((res)=>res.json()).subscribe((data)=>{
+      this.categories = data.categories;
 
-  }
-
-  click() {
-    this.storage.get('token').then((val)=> {
-      this.token = val;
-      let alert = this.alertCtrl.create({
-          title: 'Token!',
-          subTitle: this.token,
-          buttons: ['OK']
+      var link="http://139.59.5.156/test/populateHome.php";
+      var dataa = JSON.stringify(data);
+      this.http.post(link,dataa).map((res)=>res.json()).subscribe((data)=>{
+        this.results = data;
       });
-       alert.present();
-    })
-    
+    });
+
     
   }
+
+  seeListing(listing) {
+    this.navCtrl.push(SeeListingPage, listing);
+  }
+    
+    
+  
 
 }

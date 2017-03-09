@@ -16,6 +16,8 @@ import { ViewListingsPage} from '../pages/view-listings/view-listings';
 import { ViewOneListingPage} from '../pages/view-one-listing/view-one-listing';
 import { EditListingPage} from '../pages/edit-listing/edit-listing';
 import { SubBrowsePage} from '../pages/sub-browse/sub-browse';
+import { BrowseResultsPage } from '../pages/browse-results/browse-results';
+import { SeeListingPage } from '../pages/see-listing/see-listing'
 import {Storage} from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
  
@@ -36,7 +38,9 @@ import { FormsModule } from '@angular/forms';
     ViewListingsPage,
     ViewOneListingPage,
     EditListingPage,
-    SubBrowsePage
+    SubBrowsePage,
+    BrowseResultsPage,
+    SeeListingPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -59,7 +63,9 @@ import { FormsModule } from '@angular/forms';
     ViewListingsPage,
     ViewOneListingPage,
     EditListingPage,
-    SubBrowsePage
+    SubBrowsePage,
+    BrowseResultsPage,
+    SeeListingPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 

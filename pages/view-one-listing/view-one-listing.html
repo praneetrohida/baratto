@@ -30,6 +30,20 @@
       </ion-item>
 
       <ion-item>
+      <ion-label floating> Category </ion-label>
+      <ion-select [(ngModel)]="category" disabled="true" readonly="true">
+      <ion-option>{{category}}</ion-option>
+      </ion-select>
+      </ion-item>
+
+      <ion-item>
+      <ion-label floating> Subcategory </ion-label>
+      <ion-select [(ngModel)]="subcategory" disabled="true" readonly="true">
+      <ion-option>{{subcategory}}</ion-option>
+      </ion-select>
+      </ion-item>
+
+      <ion-item>
         <ion-label floating> Brand </ion-label>
         <ion-input type="text" [(ngModel)]="brand" disabled="true" readonly="true"> </ion-input>
       </ion-item>

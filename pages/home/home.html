@@ -4,7 +4,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Baratto!</h2>
-  <button ion-button (click)="click()">Click here</button>
+<ion-content>
+  <ion-list>
+    <div  *ngFor="let category of categories; let i = index">
+      <ion-item-divider>Popular in {{category.category}}</ion-item-divider>
+    <ion-item>
+      <ion-list>
+        <ion-item *ngFor = "let listing of results[i]" (click)="seeListing(listing)">
+          <ion-thumbnail item-left><ion-img [src]="'http://139.59.5.156/test/uploads/'+listing.picture"> </ion-img></ion-thumbnail>
+          <h2> {{listing.name}} </h2>
+          <h4> Brand :  {{listing.brand}} </h4>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+    </div>
+  </ion-list>
 </ion-content>

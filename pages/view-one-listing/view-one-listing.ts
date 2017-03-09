@@ -16,7 +16,7 @@ import { Storage } from '@ionic/storage';
 })
 export class ViewOneListingPage {
   listing: any;
-  _id; name; description; brand; warranty; age; condition; color; views; token;  
+  _id; name; description; brand; warranty; age; condition; color; views; token; category; subcategory;  
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController, public http: Http, public storage: Storage) {
      this.storage.get('token').then((val) => {
       this.token = val;
@@ -24,6 +24,8 @@ export class ViewOneListingPage {
     this._id = this.navParams.get('_id');
     this.name = this.navParams.get('name');
     this.description = this.navParams.get('description');
+    this.category = this.navParams.get('category');
+    this.subcategory = this.navParams.get('subcategory');
     this.brand = this.navParams.get('brand');
     this.warranty = this.navParams.get('warranty');
     this.age = this.navParams.get('age');

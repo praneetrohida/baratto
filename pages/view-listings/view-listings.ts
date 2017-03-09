@@ -15,7 +15,7 @@ import { ViewOneListingPage } from '../view-one-listing/view-one-listing';
 })
 export class ViewListingsPage {
   token: string;
-  listings:Array<any>;
+  listings:Array<any>=[];
   test : string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public http:Http, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     
@@ -36,7 +36,13 @@ export class ViewListingsPage {
     this.http.post(link,dataa).map((res)=>res.json()).subscribe((data)=> {
        
          this.listings = data.listings;
+         
        loader.dismiss();
+       if(this.listings != undefined) {
+       this.listings.forEach(listing => {
+           listing.picture = "http://139.59.5.156/test/uploads/" + listing.picture;
+         });
+       }
       // this.test = data.text();
     });
     });

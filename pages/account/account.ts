@@ -25,7 +25,8 @@ export class AccountPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public platform: Platform, public http: Http) {
     this.user={
           firstName:"",
-          lastName:""
+          lastName:"",
+          profilePicture:""
     }
     this.storage.get('token').then((val) => {
       this.token = val;
@@ -38,7 +39,7 @@ export class AccountPage {
 
     this.http.post(link,dataa).map(res => res.json()).subscribe((data)=> {
       this.user = data;
-   
+      this.user.profilePicture = "http://139.59.5.156/test/uploads/" + this.user.profilePicture;
     });
 
      });

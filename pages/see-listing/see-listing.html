@@ -1,0 +1,64 @@
+<!--
+  Generated template for the SeeListing page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list inset>
+    <ion-item>
+      <ion-note item-left> Name </ion-note>
+      <span item-content> {{name}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Description </ion-note>
+      <span item-content> {{description}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Category </ion-note>
+      <span item-content> {{category}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Subcategory </ion-note>
+      <span item-content> {{subcategory}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Brand </ion-note>
+      <span item-content> {{brand}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Warranty </ion-note>
+      <span item-content> {{warranty}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Age </ion-note>
+      <span item-content> {{age}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Condition </ion-note>
+      <span item-content> {{condition}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Color </ion-note>
+      <span item-content> {{color}} </span>
+    </ion-item>
+    <ion-item>
+      <ion-note item-left> Posted By </ion-note>
+      <span item-content color="primary" (click)="userInfo()" > {{username}} </span>
+    </ion-item>
+    <ion-item>
+      <button ion-button outline small (click)="contactInfo()"> Contact for Exchange </button>
+      <span item-content> <ion-badge>{{views}} Views</ion-badge> </span>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
