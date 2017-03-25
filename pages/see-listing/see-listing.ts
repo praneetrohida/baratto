@@ -45,9 +45,6 @@ export class SeeListingPage {
       DOB:''
     };
     this.getProfile();
-
-    
-
   }
 
 
