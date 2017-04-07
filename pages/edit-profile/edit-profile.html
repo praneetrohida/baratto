@@ -12,7 +12,7 @@
     <button ion-button clear (click)="update()"> Done  </button>
     </ion-buttons>
   </ion-navbar>
-
+ 
 </ion-header>
 
 
@@ -40,24 +40,18 @@
         <ion-input type="tel" [(ngModel)]="user.phone"> </ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label floating> Address Line </ion-label>
-        <ion-input type="text" [(ngModel)]="user.addLine"> </ion-input>
-      </ion-item>
+<ion-item>
+      <ion-label floating> State </ion-label>
+      <ion-select [(ngModel)]="selectedState" (ionChange)="loadCities()" ng-selected="user.state" >
+      <ion-option *ngFor="let state of states">{{state.name}}</ion-option>
+      </ion-select>
+    </ion-item>
 
-      <ion-item>
-        <ion-label floating> City </ion-label>
-        <ion-input type="text" [(ngModel)]="user.city"> </ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating> State </ion-label>
-        <ion-input type="text" [(ngModel)]="user.state"> </ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating> Pincode </ion-label>
-        <ion-input type="number" [(ngModel)]="user.pincode"> </ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label floating> Cities </ion-label>
+      <ion-select [(ngModel)]="selectedCity" ng-selected="user.city" >
+      <ion-option *ngFor="let city of cities">{{city}}</ion-option>
+      </ion-select>
+    </ion-item>
     </ion-list> 
 </ion-content>

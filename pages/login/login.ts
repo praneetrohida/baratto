@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, AlertController, LoadingController, ToastController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-
 import { RegisterPage } from '../register/register';
 import { TabsPage } from '../tabs/tabs';
 import { AccountPage } from '../account/account';

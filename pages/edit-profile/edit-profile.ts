@@ -17,6 +17,7 @@ export class EditProfilePage {
 
   token: string;
   user: User;
+  selectedState; selectedCity; states; cities;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public viewCtrl: ViewController, public http: Http, public alertCtrl: AlertController, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     this.user = {
@@ -26,13 +27,30 @@ export class EditProfilePage {
       sex:'',
       email:'',
       phone:'',
-      addLine:'',
-      city:'',
-      state:'',
-      pincode:'',
+      addLine:'', 
+      state: '',
+      city: '',
       DOB:''
     };
     this.getProfile();
+
+
+    var link="http://139.59.5.156/test/location.json";
+    this.http.get(link).map((res)=>res.json()).subscribe((data)=>{
+      this.states = data.states;
+    });
+    
+    this.selectedState = this.user.state;
+    this.selectedCity = this.user.city;
+
+  }
+
+    loadCities() {
+    this.states.forEach(state => {
+      if(state.name == this.selectedState) {
+        this.cities = state.cities;
+      }
+    });
   }
 
   getProfile() {
@@ -62,10 +80,6 @@ export class EditProfilePage {
      });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditProfilePage');
-  }
-
   update() {
     var link = "http://139.59.5.156/test/updateProfile.php";
     var dataa = JSON.stringify({
@@ -74,9 +88,8 @@ export class EditProfilePage {
       lastName:this.user.lastName,
       phone:this.user.phone,
       addLine:this.user.addLine,
-      city:this.user.city,
       state:this.user.state,
-      pincode:this.user.pincode,
+      city:this.user.city
     });
 
     this.http.post(link,dataa).subscribe((data)=> {
@@ -98,6 +111,45 @@ export class EditProfilePage {
     this.viewCtrl.dismiss();
   }
 
+   ionViewDidLoad(){
+
+// get the two fields
+//     let addressField = (<HTMLInputElement>document.getElementById("autoComp"));
+//     let options = {
+// };
+// let autocomplete1 = new google.maps.places.Autocomplete(addressField);
+
+// google.maps.event.addListener(autocomplete1,'place_changed', function() {
+
+// let place = autocomplete1.getPlace();
+// let geometry = place.geometry;
+// if ((geometry) !== undefined) {
+
+// console.log(place.name);
+
+// console.log(geometry.location.lng());
+
+// console.log(geometry.location.lat());
+
+// this.user.addName = place.name;
+// this.user.addLat = geometry.location.lat();
+// this.user.addLng = geometry.location.lng();
+
+// // let p1 = new google.maps.LatLng(46.0438317, 9.75936230000002);
+// // let p2 = new google.maps.LatLng(geometry.location.lat(),geometry.location.lng());
+// // let dist = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+// // console.log(dist);
+// // let toast = this.toastCtrl.create({
+// //   message: dist.toString(),
+// //   duration: 3000,
+// //   position: 'bottom'
+// // });
+// // toast.present();
+
+// }
+// });
+  }
+
 }
 interface User {
   username: string,
@@ -107,9 +159,8 @@ interface User {
   email : string,
   phone : string,
   addLine : string,
-  city : string,
-  pincode : string,
   state : string,
+  city : string,
   DOB : string
 }
 

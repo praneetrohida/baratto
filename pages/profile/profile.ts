@@ -34,9 +34,8 @@ gotProfile : boolean;
       email:'',
       phone:'',
       addLine:'',
-      city:'',
-      state:'',
-      pincode:'',
+      state: "",
+      city: '',
       DOB:''
     };
     this.getProfile();
@@ -94,8 +93,7 @@ interface User {
   email : string,
   phone : string,
   addLine : string,
-  city : string,
-  pincode : string,
   state : string,
+  city : string,
   DOB : string
 }
