@@ -25,7 +25,9 @@ export class HomePage {
         this.results = data;
       });
     });
+  }
 
+  ionViewDidLoad() {
     
   }
 
@@ -33,7 +35,19 @@ export class HomePage {
     this.navCtrl.push(SeeListingPage, listing);
   }
     
-    
+  doRefresh(refresher) {
+    var link="http://139.59.5.156/test/categories.json";
+    this.http.get(link).map((res)=>res.json()).subscribe((data)=>{
+      this.categories = data.categories;
+
+      var link="http://139.59.5.156/test/populateHome.php";
+      var dataa = JSON.stringify(data);
+      this.http.post(link,dataa).map((res)=>res.json()).subscribe((data)=>{
+        this.results = data;
+        refresher.complete(); 
+      });
+    });
+  }
   
 
 }

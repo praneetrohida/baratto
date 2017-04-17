@@ -19,12 +19,12 @@ export class WelcomePage {
   public token:string;
   public isLogin:boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public viewCtrl:ViewController) {
-    TextToSpeech.speak("Welcome to Baratto!").then(()=>console.log("success")).catch((reason)=>console.log(reason));
+    
     this.checkLogin();
   }
 
   ionViewDidLoad() {
-    this.checkLogin();
+    TextToSpeech.speak("Welcome to Baratto!").then(()=>console.log("success")).catch((reason)=>console.log(reason));
   }
 
   public checkLogin() {

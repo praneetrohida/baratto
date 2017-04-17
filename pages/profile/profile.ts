@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ModalController, LoadingController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-import {Observable} from 'rxjs/Rx';
-import { FormsModule } from '@angular/forms';
 import { EditProfilePage } from '../edit-profile/edit-profile';
 import 'rxjs/add/operator/map';
 
@@ -36,9 +34,14 @@ gotProfile : boolean;
       addLine:'',
       state: "",
       city: '',
-      DOB:''
+      DOB:'',
+      profilePicture:''
     };
     this.getProfile();
+  }
+
+  ionViewDidLoad() {
+    
   }
 
   getProfile() {
@@ -57,6 +60,7 @@ gotProfile : boolean;
 
     this.http.post(link,dataa).map(res => res.json()).subscribe((data)=> {
       this.user = data;
+      this.user.profilePicture = "http://139.59.5.156/test/uploads/" + this.user.profilePicture;
       this.gotProfile = true;
       loader.dismiss();
       // let alert = this.alertCtrl.create({
@@ -95,5 +99,6 @@ interface User {
   addLine : string,
   state : string,
   city : string,
-  DOB : string
+  DOB : string,
+  profilePicture: string
 }

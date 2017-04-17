@@ -18,11 +18,6 @@ export class ViewListingsPage {
   listings:Array<any>=[];
   test : string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public http:Http, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
-    
-    
-  }
-
-  ionViewDidLoad() {
     let loader = this.loadingCtrl.create({
       content: "Fetching data, please wait..."
     });
@@ -46,6 +41,11 @@ export class ViewListingsPage {
       // this.test = data.text();
     });
     });
+    
+  }
+
+  ionViewDidLoad() {
+    
   }
 
   viewOneListing(listing: any) {

@@ -27,7 +27,7 @@
     <ion-item>
       <ion-icon item-left name="camera" *ngIf="!pictureSelected"></ion-icon> 
       <ion-avatar item-left *ngIf="pictureSelected">
-        <ion-img [src]="pictureURI"> </ion-img>
+        <img [src]="pictureURI"/> 
       </ion-avatar>
       <button ion-button outline small (click)="uploadPic()"> Upload Profile Picture </button>
     </ion-item>

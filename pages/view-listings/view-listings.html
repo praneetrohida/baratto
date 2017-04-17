@@ -14,23 +14,15 @@
 
 
 <ion-content>
-  <ion-list no-lines no-padding no-margin>
-    <!--<div >-->
-      <!--<ion-label>-->
-     <ion-card style="padding:5px;" *ngFor="let listing of listings" (click)="viewOneListing(listing)" >
-         <!--<ion-item>-->
-          <!--<ion-label>-->
-            <ion-img [src]="listing.picture"></ion-img>
-            <h1> {{listing.name}} </h1>
+  <ion-list>
+   <ion-item style="padding:5px;" *ngFor="let listing of listings" (click)="viewOneListing(listing)" >
+           <ion-thumbnail item-left> <img [src]="listing.picture"/></ion-thumbnail>
+            <h2> {{listing.name}} </h2>
             <ion-row>
               <ion-col> Brand: {{listing.brand}} </ion-col>
               <ion-col> </ion-col>
               <ion-col end> Views: <ion-badge> {{listing.views}} </ion-badge> </ion-col>
             </ion-row>
-          <!--</ion-label>-->
-          <!--</ion-item>-->
-        </ion-card>
-        <!--</ion-label>-->
-    <!--</div>-->
+        </ion-item>
   </ion-list>
 </ion-content>

@@ -32,11 +32,10 @@ export class ViewOneListingPage {
     this.condition = this.navParams.get('condition');
     this.color = this.navParams.get('color');
     this.views = this.navParams.get('views');
-    
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ViewOneListingPage');
+    
   }
 
   presentActionSheet() {

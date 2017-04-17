@@ -18,7 +18,7 @@ export class SeeListingPage {
   _id; name; description; brand; warranty; age; condition; color; views; token; category; subcategory; username; user;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public storage: Storage, public http: Http, public toastCtrl: ToastController) {
-    this._id = this.navParams.get('_id');
+     this._id = this.navParams.get('_id');
     this.name = this.navParams.get('name');
     this.description = this.navParams.get('description');
     this.category = this.navParams.get('category');
@@ -45,6 +45,10 @@ export class SeeListingPage {
       DOB:''
     };
     this.getProfile();
+  }
+
+  ionViewDidLoad() {
+   
   }
 
 
@@ -78,9 +82,7 @@ export class SeeListingPage {
      });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SeeListingPage');
-  }
+  
 
   contactInfo() {
 

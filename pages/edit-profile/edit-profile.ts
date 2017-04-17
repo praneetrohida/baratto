@@ -30,7 +30,8 @@ export class EditProfilePage {
       addLine:'', 
       state: '',
       city: '',
-      DOB:''
+      DOB:'',
+      profilePicture:'',
     };
     this.getProfile();
 
@@ -39,9 +40,11 @@ export class EditProfilePage {
     this.http.get(link).map((res)=>res.json()).subscribe((data)=>{
       this.states = data.states;
     });
+
+  }
+
+  ionViewDidLoad(){
     
-    this.selectedState = this.user.state;
-    this.selectedCity = this.user.city;
 
   }
 
@@ -69,6 +72,10 @@ export class EditProfilePage {
 
     this.http.post(link,dataa).map(res => res.json()).subscribe((data)=> {
       this.user = data;
+      this.user.profilePicture = "http://139.59.5.156/test/uploads/" + this.user.profilePicture;
+      this.selectedState = data.state;
+      this.selectedCity = data.city;
+      this.loadCities();
       loader.dismiss();
       // let alert = this.alertCtrl.create({
       //   title: this.user.firstName,
@@ -88,19 +95,22 @@ export class EditProfilePage {
       lastName:this.user.lastName,
       phone:this.user.phone,
       addLine:this.user.addLine,
-      state:this.user.state,
-      city:this.user.city
+      state:this.selectedState,
+      city:this.selectedCity
     });
 
     this.http.post(link,dataa).subscribe((data)=> {
       let response = data.text();
-      let alertMsg : string;
-      if(response=="success") {
-        alertMsg = "Profile Successfully Updated";
+      let alertMsg : string = " ";
+      switch(response) {
+        case "success":
+          alertMsg = "Profile Updated Successfully";
+          break;
+        default :
+          alertMsg = "Some error occurred";
+          break;
       }
-      else {
-        alertMsg = "Some error occured";
-      }
+      alertMsg = response;
        this.toastCtrl.create({
                   message: alertMsg,
                   duration: 3000,
@@ -111,44 +121,7 @@ export class EditProfilePage {
     this.viewCtrl.dismiss();
   }
 
-   ionViewDidLoad(){
-
-// get the two fields
-//     let addressField = (<HTMLInputElement>document.getElementById("autoComp"));
-//     let options = {
-// };
-// let autocomplete1 = new google.maps.places.Autocomplete(addressField);
-
-// google.maps.event.addListener(autocomplete1,'place_changed', function() {
-
-// let place = autocomplete1.getPlace();
-// let geometry = place.geometry;
-// if ((geometry) !== undefined) {
-
-// console.log(place.name);
-
-// console.log(geometry.location.lng());
-
-// console.log(geometry.location.lat());
-
-// this.user.addName = place.name;
-// this.user.addLat = geometry.location.lat();
-// this.user.addLng = geometry.location.lng();
-
-// // let p1 = new google.maps.LatLng(46.0438317, 9.75936230000002);
-// // let p2 = new google.maps.LatLng(geometry.location.lat(),geometry.location.lng());
-// // let dist = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
-// // console.log(dist);
-// // let toast = this.toastCtrl.create({
-// //   message: dist.toString(),
-// //   duration: 3000,
-// //   position: 'bottom'
-// // });
-// // toast.present();
-
-// }
-// });
-  }
+   
 
 }
 interface User {
@@ -161,6 +134,7 @@ interface User {
   addLine : string,
   state : string,
   city : string,
-  DOB : string
+  DOB : string,
+  profilePicture: string,
 }
 

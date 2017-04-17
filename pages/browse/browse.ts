@@ -28,7 +28,7 @@ export class BrowsePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BrowsePage');
+    
   }
 
   itemSelected(item) {

@@ -29,6 +29,10 @@ export class EditListingPage {
     this.color = this.navParams.get('color');
   }
 
+  ionViewDidLoad() {
+    
+  }
+
   doneEditing() {
     var link = "http://139.59.5.156/test/updateListing.php";
     var dataa = JSON.stringify({
@@ -62,8 +66,6 @@ export class EditListingPage {
   }
 
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditListingPage');
-  }
+  
 
 }

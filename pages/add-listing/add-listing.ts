@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController, ToastController} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-import { ImagePicker, Camera, Transfer } from 'ionic-native';
+import { ImagePicker, Transfer } from 'ionic-native';
 
 /*
   Generated class for the AddListing page.
@@ -22,12 +22,12 @@ export class AddListingPage {
   public subcategories: any;
   public selectedCategory: any;
   public selectedSubCategory:any;
-  filename: string = "";
+  filename: string = "noimage.jpg";
   pictureURI;
   pictureSelected:boolean=false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public http:Http, public alertCtrl:AlertController, public storage: Storage, public toastCtrl: ToastController) {
-    this.listing = {
+     this.listing = {
       name:"",
       description:"",
       brand:"",
@@ -40,13 +40,13 @@ export class AddListingPage {
     this.http.get(link).map((res)=>res.json()).subscribe((data)=>{
       this.categories = data.categories;
     });
-    storage.get('token').then((val)=> {
+    this.storage.get('token').then((val)=> {
       this.token = val;
     });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddListingPage');
+   
   }
 
   loadSubcategory() {
@@ -62,7 +62,79 @@ export class AddListingPage {
       content: "Please wait..."
     });
     loader.present();
-    //write code here
+   // let phoneVal = new RegExp("[0-9]{10}");
+    let nameVal = new RegExp("[a-zA-Z\s]+");
+
+   // let descriptionVal=new RegExp("[a-zA-Z0-9\s.-,]");
+   // let emailVal = new RegExp("[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+.[a-zA-Z.]+")
+  //  let passVal = new RegExp("[a-zA-Z0-9!@#$*&.,?]{6,}");
+
+
+    if(!nameVal.test(this.listing.name) || (this.listing.name == null)) {
+      this.toastCtrl.create({
+        message:"Invalid  Name",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    } else if(this.listing.description== null) {
+      this.toastCtrl.create({
+        message:" Description required",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    } else if(this.listing.brand == null) {
+      this.toastCtrl.create({
+        message:" Brand required",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    } else if(this.listing.age == null) {
+      this.toastCtrl.create({
+        message:" age required",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    }  else if(this.listing.condition == null) {
+      this.toastCtrl.create({
+        message:" Condition required",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    }  else if(this.listing.warranty == null) {
+      this.toastCtrl.create({
+        message:"Warranty required",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    } else if(!nameVal.test(this.listing.color) || (this.listing.color == null)) {
+      this.toastCtrl.create({
+        message:"Color Invalid",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    }else if(this.selectedCategory == null) {
+      this.toastCtrl.create({
+        message:"Category not selected",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    } else if(this.selectedSubCategory == null) {
+      this.toastCtrl.create({
+        message:"Sub category not selected",
+        showCloseButton: true
+      }).present();
+      loader.dismiss();
+      return;
+    
+    }
     var link = 'http://139.59.5.156/test/addListing.php';
     var dataa = JSON.stringify({
       token: this.token,
@@ -115,11 +187,11 @@ export class AddListingPage {
  
   // File name only
   this.filename = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 12)+".jpeg";
-  this.toastCtrl.create({
-                  message: this.filename,
-                  duration: 3000,
-                  position: "bottom"
-        }).present();
+  // this.toastCtrl.create({
+  //                 message: this.filename,
+  //                 duration: 3000,
+  //                 position: "bottom"
+  //       }).present();
  
   var options = {
     fileKey: "file",
@@ -137,7 +209,9 @@ export class AddListingPage {
   fileTransfer.upload(targetPath, url, options).then(data => {
     
   }, err => {
-    
+    // this.toastCtrl.create({
+    //   message: err
+    // }).present();
   });
     });
     // Camera.getPicture({

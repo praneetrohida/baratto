@@ -19,7 +19,9 @@ export class SubBrowsePage {
     this.category = this.navParams.get('category');
     this.subcategories = this.category.subcategories;
   }
-
+  ionViewDidLoad() {
+    
+  }
   itemSelected(subcategory) {
     this.navCtrl.push(BrowseResultsPage,{
       category:this.category.category,

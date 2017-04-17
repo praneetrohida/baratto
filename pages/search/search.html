@@ -20,15 +20,25 @@
       <button ion-button clear icon-only item-right (click)="getResults()"> <ion-icon name="search"></ion-icon> </button>
     </ion-item>
 
-    <ion-card style="padding:5px;" *ngFor="let listing of listings" (click)="seeListing(listing)" >
-            <ion-img [src]="listing.picture"></ion-img>
-            <h1> {{listing.name}} </h1>
+    <ion-item>
+    <ion-label>Results from {{user.city}}</ion-label>
+    <ion-toggle [(ngModel)]="OnlyFromHomeCity"></ion-toggle>
+    </ion-item>
+
+    <ion-item style="padding:5px;" *ngFor="let listing of trueListings" (click)="seeListing(listing)" >
+           <ion-thumbnail item-left> <img [src]="listing.picture"/></ion-thumbnail>
+            <h2> {{listing.name}} </h2>
             <ion-row>
               <ion-col> Brand: {{listing.brand}} </ion-col>
               <ion-col> </ion-col>
               <ion-col end> Views: <ion-badge> {{listing.views}} </ion-badge> </ion-col>
             </ion-row>
-        </ion-card>
+        </ion-item>
+
+
+        
   </ion-list>
+
+
 
 </ion-content>

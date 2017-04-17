@@ -39,6 +39,9 @@ export class BrowseResultsPage {
       // this.test = data.text();
     });
   }
+  ionViewDidLoad() {
+    
+  }
 
   seeListing(listing) {
     this.navCtrl.push(SeeListingPage, listing);

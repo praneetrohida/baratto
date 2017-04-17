@@ -6,7 +6,6 @@ import { AccountPage } from '../account/account';
 import { BrowsePage } from '../browse/browse';
 import {SearchPage} from '../search/search';
 import { LoginPage } from '../login/login';
-import { RegisterPage } from '../register/register';
 import {Storage} from '@ionic/storage';
 
 @Component({
@@ -18,13 +17,13 @@ export class TabsPage {
   tab1Root: any = HomePage;
   tab2Root: any = BrowsePage;
   tab3Root: any = SearchPage;
-  tab4Root: any ;
-  tab4title: string = "Sign In";
+  tab4Root: any = AccountPage ;
+  tab4title: string = "Account";
 
   token:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage) {
-    this.checkLogin();
+    // this.checkLogin();
     
     
     

@@ -18,7 +18,7 @@
   <ion-list inset>
     <ion-item>
       <ion-avatar item-left>
-        <ion-img [src]="user.profilePicture"> </ion-img>
+        <img [src]="user.profilePicture"/>
         
       </ion-avatar>
       <h1> {{user.firstName}} {{user.lastName}} </h1>
@@ -37,13 +37,6 @@
         <ion-icon name="list" item-left> </ion-icon>        
       </ion-avatar>
       <span> View Listings </span>
-    </ion-item>
-
-    <ion-item (click)="viewWishlist()">
-      <ion-avatar item-left>
-        <ion-icon name="heart" item-left> </ion-icon>        
-      </ion-avatar>
-      <span> My Wishlist </span>
     </ion-item>
   </ion-list>
 

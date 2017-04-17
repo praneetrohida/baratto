@@ -4,7 +4,6 @@ import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { RegisterPage } from '../register/register';
 import { TabsPage } from '../tabs/tabs';
-import { AccountPage } from '../account/account';
 
 /*
   Generated class for the Login page.
@@ -54,9 +53,18 @@ console.log(form.valid);
           alertMessage = "Incorrect username or password.";
         }
         else {
+          console.log('sent');
           alertMessage = "Login Successful";
           this.storage.set("token",this.token);
-          
+          this.toastCtrl.create({
+                  message: alertMessage,
+                  duration: 3000,
+                  position: "bottom"
+        }).present();
+         loader.dismiss();
+         this.navCtrl.popToRoot().then((val) => {
+            this.navCtrl.setRoot(TabsPage);
+         }).catch(() => {});
           //this.navCtrl.parent.select(0);
           // this.navCtrl.push(AccountPage);
           
@@ -67,9 +75,6 @@ console.log(form.valid);
                   position: "bottom"
         }).present();
          loader.dismiss();
-         this.navCtrl.popToRoot().then((val) => {
-            this.navCtrl.setRoot(TabsPage);
-         }).catch(() => {});
         //  this.navCtrl.remove(1,this.navCtrl.length()-2);
         //  this.navCtrl.pop();
         

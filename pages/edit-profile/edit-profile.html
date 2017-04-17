@@ -20,7 +20,7 @@
       <ion-list inset>
       <ion-item>
       <ion-avatar item-left>
-        <img src="https://s-media-cache-ak0.pinimg.com/originals/97/e6/13/97e613c2e0a03eef5321108f10abb635.jpg">
+        <img [src]="user.profilePicture"/>
       </ion-avatar>
       
       </ion-item>
@@ -42,14 +42,14 @@
 
 <ion-item>
       <ion-label floating> State </ion-label>
-      <ion-select [(ngModel)]="selectedState" (ionChange)="loadCities()" ng-selected="user.state" >
-      <ion-option *ngFor="let state of states">{{state.name}}</ion-option>
+      <ion-select [(ngModel)]="selectedState" (ionChange)="loadCities()">
+      <ion-option *ngFor="let state of states" >{{state.name}}</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label floating> Cities </ion-label>
-      <ion-select [(ngModel)]="selectedCity" ng-selected="user.city" >
+      <ion-select [(ngModel)]="selectedCity"  >
       <ion-option *ngFor="let city of cities">{{city}}</ion-option>
       </ion-select>
     </ion-item>

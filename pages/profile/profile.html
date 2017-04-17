@@ -21,8 +21,8 @@
     <ion-list inset>
       <ion-item>
       <ion-avatar item-left>
-        <img src="https://s-media-cache-ak0.pinimg.com/originals/97/e6/13/97e613c2e0a03eef5321108f10abb635.jpg">
-      </ion-avatar>
+        <img [src]="user.profilePicture"/>
+      </ion-avatar> 
       <div style="font-size:15px"> {{user.firstName}} {{user.lastName}} </div>
       </ion-item>
 

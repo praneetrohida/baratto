@@ -2,13 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import { Http } from '@angular/http';
-import { TabsPage } from '../tabs/tabs';
-import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
-import { WelcomePage } from '../welcome/welcome';
 import { AddListingPage } from '../add-listing/add-listing';
 import { ViewListingsPage } from '../view-listings/view-listings';
-
 
 /*
   Generated class for the Account page.
@@ -44,6 +40,9 @@ export class AccountPage {
 
      });
   }
+  ionViewDidLoad() {
+    
+  }
 
   logout() {
     this.storage.set('token',null);
@@ -51,9 +50,7 @@ export class AccountPage {
     // this.navCtrl.remove(1,this.navCtrl.length()-2);
     // this.navCtrl.pop();
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccountPage');
-  }
+  
 
   viewProfile() {
     this.navCtrl.push(ProfilePage);

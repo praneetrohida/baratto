@@ -20,7 +20,6 @@ import { BrowseResultsPage } from '../pages/browse-results/browse-results';
 import { SeeListingPage } from '../pages/see-listing/see-listing'
 import {Storage} from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
-import {GoogleMaps} from '@ionic-native/google-maps';
  
 @NgModule({
   declarations: [
@@ -70,8 +69,7 @@ import {GoogleMaps} from '@ionic-native/google-maps';
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
-    Storage,
-    GoogleMaps
+    Storage, 
   ]
 })
 export class AppModule {}
